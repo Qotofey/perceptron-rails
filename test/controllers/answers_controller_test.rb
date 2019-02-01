@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class AnswersControllerTest < ActionDispatch::IntegrationTest
+
   setup do
     @answer = answers(:one)
+    @update = Answer.new(text: 'новый ответ')
   end
 
   test "should get index" do
@@ -11,8 +13,9 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create answer" do
+    # все аргументы есть
     assert_difference('Answer.count') do
-      post answers_url, params: { answer: { text: @answer.text, vector: @answer.vector } }, as: :json
+      post answers_url, params: { answer: { text: '@answer.text' } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +27,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update answer" do
-    patch answer_url(@answer), params: { answer: { text: @answer.text, vector: @answer.vector } }, as: :json
+    patch answer_url(@answer), params: { answer: { text: @update.text } }, as: :json
     assert_response 200
   end
 

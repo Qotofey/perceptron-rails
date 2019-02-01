@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: MyString
+  vector: [1, 0, 0]
+
+two:
+  value: MyString1
+  vector: [0, 1, 0]
+
+three:
+  value: MyString2
+  vector: [0, 0, 1]

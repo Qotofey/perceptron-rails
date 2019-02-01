@@ -1,9 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyString
-  vector: MyString
+  text:
+    Ruby is the fastest growing and most exciting dynamic
+    language out there. If you need to get working programs
+    delivered fast, you should add Ruby to your toolbox.
+  vector: [1, 0]
 
 two:
-  text: MyString
-  vector: MyString
+  text: Programming Ruby 1.9
+  vector: [0, 1]

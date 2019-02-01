@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: Что вы делаете?
+  answer: one
+
+two:
+  text: Чем вы занимаетесь?
+  answer: one
+
+three:
+  text: Где находится вкладка "настрокйки"?
+  answer: two
