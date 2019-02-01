@@ -5,9 +5,9 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.6.0
 
-* System dependencies
+* System dependencies 
 
 * Configuration
 
@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Этапы разработки
+1. Создаем таблицу ответов
+2. Создаём таблицу вопросов
+3. Создаём таблицу основ слов
+4. Создаём таблицу слоёв

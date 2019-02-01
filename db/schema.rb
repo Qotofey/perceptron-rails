@@ -10,11 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_125300) do
+ActiveRecord::Schema.define(version: 2019_02_01_081433) do
 
   create_table "answers", force: :cascade do |t|
     t.text "text"
     t.string "vector"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "layers", force: :cascade do |t|
+    t.integer "inputs"
+    t.integer "outputs"
+    t.string "weights"
+    t.integer "perceptron_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["perceptron_id"], name: "index_layers_on_perceptron_id"
+  end
+
+  create_table "perceptrons", force: :cascade do |t|
+    t.integer "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

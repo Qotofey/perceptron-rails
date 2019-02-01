@@ -10,6 +10,9 @@ Answer.delete_all
 Question.delete_all
 Word.delete_all
 
+Perceptron.delete_all
+Layer.delete_all
+
 answer_one = Answer.create(text: 'Кнопка "меню" находится в левом верхнем углу.')
 Question.create(text: 'Где находится кнопка "меню"?', answer: answer_one)
 Question.create(text: 'Как зайти в "меню"?', answer: answer_one)
@@ -38,3 +41,7 @@ Question.create(text: 'Где находится вкладка "настрой�
 # Word.create(value: 'что')
 # Word.create(value: 'дела')
 # Word.create(value: 'вкладк')
+
+perceptron = Perceptron.create(size: 2)
+# layer_one = Layer.create(perceptron: perceptron)
+# layer_two = Layer.create(perceptron: perceptron)

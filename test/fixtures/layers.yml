@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  weights: MyString
+  inputs: 4
+  outputs: 4
+  weights: [ [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1] ]
+  perceptron: one
 
 two:
-  weights: MyString
+  inputs: 4
+  outputs: 4
+  weights:  [ [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1] ]
+  perceptron: one
