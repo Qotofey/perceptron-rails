@@ -26,10 +26,39 @@ class Perceptron < ApplicationRecord
     end
     signals
   end
-  #
-  # # вычисляем ошибку
-  # def predict_error
-  #
-  # end
+
+  # вычисляем ошибку
+  def predict_error sample
+
+  end
+
+  # обратное распространение ошибки, все итерации
+  def learn sample_list, epochs
+
+  end
+
+  # обратное распространение ошибки, одна итерация
+  def train inputs, expected
+    actual = put inputs
+    errors = actual - Matrix[expected]
+    self.layers.reverse_each do |layer|
+      errors = foreach_all_neurons layer, errors
+    end
+    e = 0
+    errors.each do |error|
+      e += error * error
+    end
+    e
+  end
+
+  def foreach_all_neurons layer, errors
+    gradients = Mapper::derivative_bipolar layer.outputs
+    delta_wights = Matrix.combine(errors, gradients) { |a, b| a * b }
+
+    layer.weights -= (delta_wights.t * layer.inputs * 0.025).t
+    return delta_wights * layer.weights.t
+  end
+
+
 
 end

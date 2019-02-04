@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LayersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @layer = layers(:one)
+    @layer = Layer.new(inputs: 4, outputs: 4, perceptron: Perceptron.new(size: 2))
   end
 
   test "should get index" do
@@ -24,7 +24,7 @@ class LayersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update layer" do
-    patch layer_url(@layer), params: { layer: { weights: @layer.weights } }, as: :json
+    patch layer_url(@layer), params: { layer: { weights: [[]] } }, as: :json
     assert_response 200
   end
 
