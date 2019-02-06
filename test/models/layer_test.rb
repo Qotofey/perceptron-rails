@@ -3,7 +3,7 @@ require 'test_helper'
 class LayerTest < ActiveSupport::TestCase
 
   test "create layer" do
-    layer = Layer.new(inputs: 4, outputs: 4, perceptron: Perceptron.new(size: 2))
+    layer = Layer.new(size_inputs: 4, size_outputs: 4, perceptron: Perceptron.new(size: 2))
     assert layer.valid?
     assert !layer.errors[:inputs].any?
     assert !layer.errors[:outputs].any?
