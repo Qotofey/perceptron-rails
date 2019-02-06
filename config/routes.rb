@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :perceptrons
+  resources :perceptrons do
+    collection do
+      post 'asking'
+    end
+  end
   resources :layers
   resources :words
   resources :questions

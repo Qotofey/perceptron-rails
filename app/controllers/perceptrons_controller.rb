@@ -1,5 +1,5 @@
 class PerceptronsController < ApplicationController
-  before_action :set_perceptron, only: [:show, :update, :destroy]
+  before_action :set_perceptron, only: [:show, :update, :destroy, :ask]
 
   # GET /perceptrons
   def index
@@ -36,6 +36,12 @@ class PerceptronsController < ApplicationController
   # DELETE /perceptrons/1
   def destroy
     @perceptron.destroy
+  end
+
+  # POST /perceptron/asking
+  def asking
+    text = params[:text]
+    render json: @perceptron.ask(text)
   end
 
   private
