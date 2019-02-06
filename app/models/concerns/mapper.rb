@@ -18,31 +18,6 @@ class Mapper
     m = matrix.map { |value| num_derivative_sigmoid value }
   end
 
-
-  def self.result_print matrix, num
-    # puts "Анализ: #{num}"
-    i = 0
-    matrix.each do |value|
-      # puts "Число: #{i}; уверенность персептрона: #{(value * 100).round}%"
-      i += 1
-    end
-  end
-
-  def self.charecter_print matrix, num
-    # print "Число: #{num}; "
-    i = 0
-    big_val = 0
-    big_index = 0
-    matrix.each do |val|
-      if big_val < val
-        big_val = val
-        big_index = i
-      end
-      i += 1
-    end
-    # puts "распознан символ: #{big_index}; уверенность: #{(big_val * 100).round}%"
-  end
-
   private
 
   def self.num_bipolar x

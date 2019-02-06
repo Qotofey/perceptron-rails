@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  require 'modules/porter_stemmer'
+  require 'concerns/porter_stemmer'
   include PorterStemmer
 
   belongs_to :answer

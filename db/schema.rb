@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 2019_02_01_081433) do
   end
 
   create_table "layers", force: :cascade do |t|
-    t.integer "inputs"
-    t.integer "outputs"
+    t.integer "size_inputs"
+    t.integer "size_outputs"
     t.string "weights"
+    t.string "inputs"
+    t.string "outputs"
     t.integer "perceptron_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
