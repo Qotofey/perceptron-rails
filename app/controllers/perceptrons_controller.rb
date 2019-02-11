@@ -1,5 +1,5 @@
 class PerceptronsController < ApplicationController
-  before_action :set_perceptron, only: [:show, :update, :destroy, :ask]
+  before_action :set_perceptron, only: [:show, :update, :destroy]
 
   # GET /perceptrons
   def index
@@ -40,6 +40,7 @@ class PerceptronsController < ApplicationController
 
   # POST /perceptron/asking
   def asking
+    @perceptron = Perceptron.first
     text = params[:text]
     render json: @perceptron.ask(text)
   end

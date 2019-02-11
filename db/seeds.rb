@@ -21,7 +21,7 @@ answer_two = Answer.create(text: 'Нажмите на кнопку в право
 Question.create(text: 'Как запустить обучение системы?', answer: answer_two)
 Question.create(text: 'Не могу запустить обучение, что делать?', answer: answer_two)
 
-answer_three = Answer.create(text: 'Во вкладке "меню"')
+answer_three = Answer.create(text: 'Во вкладке "меню" находится кнопка "настройки".')
 Question.create(text: 'Где находятся настройки?', answer: answer_three)
 Question.create(text: 'Где находится вкладка "настройки"?', answer: answer_three)
 
