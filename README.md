@@ -26,6 +26,9 @@ Linux | BSD | macOS | Unix
 ```
 
 * Configuration
+
+##### CentOS 7
+
 ```bash
 ssh root@193.200.74.71
 ```
@@ -38,9 +41,6 @@ usermod -aG wheel deploy
 
 ```bash
 su - deploy
-
-logout 
-logout 
 ```
 
 ```bash
@@ -54,17 +54,31 @@ sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-dev
 ```bash
 cd
 git clone git://github.com/sstephenson/rbenv.git .rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 exec $SHELL
 
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bash_profile
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 exec $SHELL
+
+rbenv install -v 2.6.0
+rbenv global 2.6.0
 ```
 
 ```bash
+sudo yum install nginx
+```
 
+```bash
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --reload
+
+sudo systemctl start nginx
+sudo nginx -s reload
+
+sudo chown -R $USER:$USER /var/www/perceptron.qotofey.ru
+sudo chmod -R 755 /var/www
 ```
 
 * Database creation
