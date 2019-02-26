@@ -9,6 +9,7 @@ set :repo_url, "git@github.com:qotofey/perceptron-rails.git"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/api-perceptron.qotofey.ru/"
+set :passenger_restart_with_touch, true
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
