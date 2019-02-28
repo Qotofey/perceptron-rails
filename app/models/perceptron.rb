@@ -87,7 +87,7 @@ class Perceptron < ApplicationRecord
       _vector += Vector[*w.vector] unless w.nil?
     end
     out = put(_vector).to_a[0]
-    Answer.all[out.index(out.max)].text
+    Answer.all[out.index(out.max)]
   end
 
 end

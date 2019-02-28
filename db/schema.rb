@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2019_02_01_081433) do
   create_table "answers", force: :cascade do |t|
     t.text "text"
     t.string "vector"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "layers", force: :cascade do |t|
@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(version: 2019_02_01_081433) do
     t.string "inputs"
     t.string "outputs"
     t.integer "perceptron_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["perceptron_id"], name: "index_layers_on_perceptron_id"
   end
 
   create_table "perceptrons", force: :cascade do |t|
     t.integer "size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -42,16 +42,16 @@ ActiveRecord::Schema.define(version: 2019_02_01_081433) do
     t.string "vector"
     t.string "basics"
     t.integer "answer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["answer_id"], name: "index_questions_on_answer_id"
   end
 
   create_table "words", force: :cascade do |t|
     t.string "value"
     t.string "vector"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
