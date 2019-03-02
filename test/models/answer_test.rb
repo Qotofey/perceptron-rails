@@ -8,7 +8,6 @@ class AnswerTest < ActiveSupport::TestCase
     answer = Answer.new
     assert answer.invalid?
     assert answer.errors[:text].any?
-    assert !answer.errors[:vector].any?
   end
 
   test "объект должен создаваться с одним аргументом text" do

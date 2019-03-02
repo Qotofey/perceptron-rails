@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :perceptrons do
+  resources :perceptrons, except: [ :update, :destroy ] do
     collection do
-      post 'asking'
+      post :asking
+      post :learning
     end
   end
-  resources :layers
-  resources :words
+  resources :layers, only: [ :index ]
+  resources :words, only: [ :index ]
   resources :questions
   resources :answers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

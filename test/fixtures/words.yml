@@ -1,13 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  value: MyString
-  vector: [1, 0, 0]
+  value: где
 
 two:
-  value: MyString1
-  vector: [0, 1, 0]
+  value: наход
 
 three:
-  value: MyString2
-  vector: [0, 0, 1]
+  value: кнопк

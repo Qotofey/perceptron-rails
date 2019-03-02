@@ -52,7 +52,7 @@ sudo yum update
 sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
 ```
 ```bash
-cd
+cd ~
 git clone git://github.com/sstephenson/rbenv.git .rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
@@ -67,7 +67,26 @@ rbenv global 2.6.0
 ```
 
 ```bash
-sudo yum install nginx
+sudo yum install -y epel-release yum-utils
+sudo yum-config-manager --enable epel
+sudo yum clean all && sudo yum update -y
+
+sudo yum update -y
+
+date
+
+sudo yum install -y ntp
+sudo chkconfig ntpd on
+sudo ntpdate pool.ntp.org
+sudo service ntpd start
+
+sudo yum install -y pygpgme curl
+
+
+sudo curl --fail -sSLo /etc/yum.repos.d/passenger.repo https://oss-binaries.phusionpassenger.com/yum/definitions/el-passenger.repo
+
+
+sudo yum install -y nginx passenger || sudo yum-config-manager --enable cr && sudo yum install -y nginx passenger
 ```
 
 ```bash

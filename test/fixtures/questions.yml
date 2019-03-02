@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: Что вы делаете?
+  text: Где находится кнопка "меню"?
   answer: one
 
 two:
-  text: Чем вы занимаетесь?
+  text: Как зайти в "меню"?
   answer: one
 
 three:
-  text: Где находится вкладка "настрокйки"?
+  text: Как запустить обучение системы?
   answer: two

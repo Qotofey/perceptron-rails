@@ -12,6 +12,8 @@ class Question < ApplicationRecord
   serialize :basics, Array
 
   after_create :filtered
+  after_create :after_event_add_new_question
+  after_update :after_event_add_new_question
   # after_update :filtered
   #
   # before_update :clean
@@ -33,6 +35,10 @@ class Question < ApplicationRecord
     self.basics = []
     self.vector = []
     self.save
+  end
+
+  def after_event_add_new_question
+    Question.all.each { |q| q.vector = []}
   end
 
 

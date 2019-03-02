@@ -42,6 +42,6 @@ Question.create(text: 'Где находится вкладка "настрой�
 # Word.create(value: 'дела')
 # Word.create(value: 'вкладк')
 
-perceptron = Perceptron.create(size: 2)
+# perceptron = Perceptron.create(size: 2)
 # layer_one = Layer.create(perceptron: perceptron)
 # layer_two = Layer.create(perceptron: perceptron)

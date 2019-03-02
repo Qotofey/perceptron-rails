@@ -38,11 +38,18 @@ class PerceptronsController < ApplicationController
     @perceptron.destroy
   end
 
-  # POST /perceptron/asking
+  # POST /perceptrons/asking
   def asking
     @perceptron = Perceptron.first
     text = params[:text]
     render json: @perceptron.ask(text)
+  end
+
+  # POST /perceptrons/learning
+  def learning
+    @perceptron = Perceptron.first
+    epochs = params[:epochs]
+    render json: @perceptron.learn(epochs)
   end
 
   private

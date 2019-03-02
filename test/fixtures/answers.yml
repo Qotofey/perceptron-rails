@@ -2,11 +2,7 @@
 
 one:
   text:
-    Ruby is the fastest growing and most exciting dynamic
-    language out there. If you need to get working programs
-    delivered fast, you should add Ruby to your toolbox.
-  vector: [1, 0]
+    Кнопка "меню" находится в левом верхнем углу.
 
 two:
-  text: Programming Ruby 1.9
-  vector: [0, 1]
+  text: Нажмите на кнопку в правом верхнем углу, обучение потребует время.

@@ -6,6 +6,7 @@ class Perceptron < ApplicationRecord
 
   validates :size, presence: true
 
+  before_create :before_event_create_new_perceptron
   after_create :build
 
   def build
@@ -19,6 +20,7 @@ class Perceptron < ApplicationRecord
         Layer.create(size_inputs: size_inputs, size_outputs: size_inputs, perceptron: self)
       end
     end
+    return learn 0
   end
 
   # отправляем сигналы
@@ -45,13 +47,14 @@ class Perceptron < ApplicationRecord
       question.vector = _vector.to_a
       question.save
     end
-
+    error = 0
     for i in (0..epochs)
       error = 0
       Question.all.each do |question|
         error += train question.vector, question.answer.vector
       end
     end
+    return { result_error: error }
   end
 
   # обратное распространение ошибки, одна итерация
@@ -88,6 +91,10 @@ class Perceptron < ApplicationRecord
     end
     out = put(_vector).to_a[0]
     Answer.all[out.index(out.max)]
+  end
+
+  def before_event_create_new_perceptron
+    Perceptron.destroy_all
   end
 
 end
