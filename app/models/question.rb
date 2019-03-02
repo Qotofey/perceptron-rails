@@ -38,7 +38,7 @@ class Question < ApplicationRecord
   end
 
   def after_event_add_new_question
-    Question.all.each { |q| q.vector = []}
+    Question.all.each { |q| q.vector = [] }
   end
 
 
