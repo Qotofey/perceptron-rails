@@ -3,9 +3,12 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
-    @questions = Question.all
-
-    render json: @questions
+    # if response.headers["auth_token"].present?
+      @questions = Question.all
+      render json: @questions
+    # end
+    #   render status: 401,
+    #          json: { success: false }
   end
 
   # GET /questions/1
@@ -16,11 +19,13 @@ class QuestionsController < ApplicationController
   # POST /questions
   def create
     @question = Question.new(question_params)
-
     if @question.save
-      render json: @question, status: :created, location: @question
+      render json: @question,
+             status: :created,
+             location: @question
     else
-      render json: @question.errors, status: :unprocessable_entity
+      render json: @question.errors,
+             status: :unprocessable_entity
     end
   end
 
@@ -46,6 +51,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def question_params
-      params.require(:question).permit(:text, :vector, :answer_id)
+      params.require(:question).permit(:text, :answer_id)
     end
 end
