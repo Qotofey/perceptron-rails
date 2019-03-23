@@ -5,8 +5,8 @@ class Question < ApplicationRecord
   belongs_to :answer
 
   validates :text, presence: true, uniqueness: true
-  # validates :vector, uniqueness: false
-  # validates :basics, uniqueness: false
+  validates :vector, uniqueness: false
+  validates :basics, uniqueness: false
 
   serialize :vector, Array
   serialize :basics, Array
