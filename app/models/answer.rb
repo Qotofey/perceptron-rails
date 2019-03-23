@@ -6,26 +6,29 @@ class Answer < ApplicationRecord
 
   serialize :vector, Array
 
-  after_create :create_vectors
-  before_create do
-    self.vector = []
-  end
+  after_save :create_vectors
 
   def create_vectors
     size = Answer.all.size - 1
 
     for i in 0...size do
-      _a = Answer.all[i]
-      _a.vector << 0
-      _a.save
+      a = Answer.all[i]
+      a.vector << 0
+      a.save
     end
 
-    _answ = Answer.all[size]
+    a = Answer.all[size]
     for i in 0...size do
-      _answ.vector << 0
+      a.vector << 0
     end
-    _answ.vector << 1
-    _answ.save
+    a.vector << 1
+    a.save
   end
 
 end
+
+=begin
+git add .
+git commit -am "fix prod"
+git push
+=end
