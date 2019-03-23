@@ -23,7 +23,6 @@ class Answer < ApplicationRecord
     end
     a.vector << 1
     a.save
-    puts '!!!'
   end
 
 end
