@@ -9,14 +9,14 @@ class Answer < ApplicationRecord
   after_create :create_vectors
 
   def create_vectors
-    size = Answer.all.size - 1
+    size = self.all.size - 1
 
     for i in 0...size do
       self.all[i].vector << 0
       self.all[i].save
     end
 
-    a = Answer.all[size]
+    a = self.all[size]
     for i in 0...size do
       a.vector << 0
     end
@@ -31,4 +31,5 @@ git add .
 git commit -am "fix prod"
 git push
 cap production deploy
+
 =end
