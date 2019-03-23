@@ -9,14 +9,14 @@ class Answer < ApplicationRecord
   after_create :create_vectors
 
   def create_vectors
-    size = self.all.size - 1
+    size = Answer.all.size - 1
 
     for i in 0...size do
-      self.all[i].vector << 0
-      self.all[i].save
+      Answer.all[i].vector << 0
+      Answer.all[i].save!
     end
 
-    a = self.all[size]
+    a = Answer.all[size]
     for i in 0...size do
       a.vector << 0
     end
