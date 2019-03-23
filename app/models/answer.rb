@@ -11,11 +11,10 @@ class Answer < ApplicationRecord
   def create_vectors
     size = Answer.all.size - 1
 
-    answer = Answer.all[0]
     for i in 0...size do
       answer = Answer.all[i]
-      answer.vector << 0
-      answer.save!
+      answer&.vector << 0
+      answer&.save!
     end
 
     a = Answer.all[size]
