@@ -7,21 +7,24 @@ class Answer < ApplicationRecord
   serialize :vector, Array
 
   after_create :create_vectors
+  before_create do
+    self.vector = []
+  end
 
   def create_vectors
     size = Answer.all.size - 1
 
     for i in 0...size do
       a = Answer.all[i]
-      a.vector.push 0
+      a.vector << 0
       a.save
     end
 
     a = Answer.all[size]
     for i in 0...size do
-      a.vector.push 0
+      a.vector << 0
     end
-    a.vector.push 1
+    a.vector << 1
     a.save
   end
 
