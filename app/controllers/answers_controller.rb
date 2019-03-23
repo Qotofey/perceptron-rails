@@ -18,10 +18,8 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
 
     if @answer.save
-      @answer.create_vectors
       render json: @answer, status: :created, location: @answer
     else
-      @answer.create_vectors
       render json: @answer.errors, status: :unprocessable_entity
     end
   end

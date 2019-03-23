@@ -6,16 +6,11 @@ class Answer < ApplicationRecord
 
   serialize :vector, Array
 
-  # after_validation :create_vectors
+  before_create :normalize_other_vectors
+  after_create :create_vectors
 
   def create_vectors
     size = Answer.all.size - 1
-
-    for i in 0...size do
-      answer = Answer.all[i]
-      answer&.vector << 0
-      answer&.save!
-    end
 
     a = Answer.all[size]
     for i in 0...size do
@@ -23,6 +18,14 @@ class Answer < ApplicationRecord
     end
     a.vector << 1
     a.save
+  end
+
+  def normalize_other_vectors
+    for i in 0..size do
+      answer = Answer.all[i]
+      answer.vector << 0
+      answer.save
+    end
   end
 
 end
