@@ -6,8 +6,8 @@ class Answer < ApplicationRecord
 
   serialize :vector, Array
 
-  before_create :normalize_other_vectors
-  after_create :create_vectors
+  # before_create :normalize_other_vectors
+  # after_create :create_vectors
 
   def create_vectors
     size = Answer.all.size - 1
