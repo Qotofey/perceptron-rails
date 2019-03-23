@@ -12,20 +12,20 @@ class Answer < ApplicationRecord
   end
 
   def create_vectors
-    size = Answer.all.size
+    size = Answer.all.size - 1
 
     for i in 0...size do
-      a = Answer.all[i]
-      a.vector << 0
-      a.save
+      _a = Answer.all[i]
+      _a.vector << 0
+      _a.save
     end
 
-    a = Answer.all[size]
+    _answ = Answer.all[size]
     for i in 0...size do
-      a.vector << 0
+      _answ.vector << 0
     end
-    a.vector << 1
-    a.save
+    _answ.vector << 1
+    _answ.save
   end
 
 end
