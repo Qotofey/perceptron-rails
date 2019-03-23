@@ -6,7 +6,7 @@ class Answer < ApplicationRecord
 
   serialize :vector, Array
 
-  after_create :create_vectors
+  # after_validation :create_vectors
 
   def create_vectors
     size = Answer.all.size - 1
