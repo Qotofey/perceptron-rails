@@ -12,8 +12,8 @@ class Answer < ApplicationRecord
     size = Answer.all.size - 1
 
     for i in 0...size do
-      Answer.all[i].vector << 0
-      Answer.all[i].save
+      self.all[i].vector << 0
+      self.all[i].save
     end
 
     a = Answer.all[size]
