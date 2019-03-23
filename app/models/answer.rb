@@ -6,7 +6,7 @@ class Answer < ApplicationRecord
 
   serialize :vector, Array
 
-  before_save :normalize_other_vectors
+  before_create :normalize_other_vectors
   after_create :create_vectors
 
   def create_vectors
@@ -21,7 +21,7 @@ class Answer < ApplicationRecord
   end
 
   def normalize_other_vectors
-    for i in 0..size do
+    for i in 0...Answer.all.size do
       answer = Answer.all[i]
       answer.vector << 0
       answer.save
