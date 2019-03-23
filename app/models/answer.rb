@@ -17,7 +17,7 @@ class Answer < ApplicationRecord
     for i in 0...size do
       a = Answer.all[i]
       a.vector << 0
-      a.save
+      a.save!
     end
 
     a = Answer.all[size]
@@ -25,7 +25,7 @@ class Answer < ApplicationRecord
       a.vector << 0
     end
     a.vector << 1
-    a.save
+    a.save!
   end
 
 end
