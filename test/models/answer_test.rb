@@ -11,24 +11,16 @@ class AnswerTest < ActiveSupport::TestCase
   end
 
   test "объект должен создаваться с одним аргументом text" do
-    answer = Answer.new(text: 'text test answer')
+    answer = Answer.new(text: 'Во вкладке "меню" находится кнопка "настройки".')
     assert answer.valid?
     assert !answer.errors[:text].any?
     assert !answer.errors[:vector].any?
   end
 
-  test "объект не должен создаваться с одним аргументом vector" do
-    answer = Answer.new(vector: [0, 1, 0, 0, 0])
+  test "свойстов ответа text должно быть уникальным " do
+    answer = Answer.new(text: 'Нажмите на кнопку в правом верхнем углу, обучение потребует время.')
     assert answer.invalid?
-    assert answer.errors[:text].any?
-    assert !answer.errors[:vector].any?
   end
 
-  test "объект не должен создаваться с аргументом vector" do
-    answer = Answer.new(text: 'text test answer', vector: [0, 0, 1, 0, 0])
-    assert answer.valid?
-    assert !answer.errors[:text].any?
-    assert !answer.errors[:vector].any?
-  end
 
 end

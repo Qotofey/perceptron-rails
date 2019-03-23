@@ -6,14 +6,12 @@ class WordTest < ActiveSupport::TestCase
     word = Word.new
     assert word.invalid?
     assert word.errors[:value].any?
-    assert !word.errors[:vector].any?
   end
 
   test "нельзя создать объект без поля value" do
     word = Word.new(vector: [1, 0, 0])
     assert word.invalid?
     assert word.errors[:value].any?
-    assert word.errors[:vector].any?
   end
 
   test "можно создать объект с полем value" do

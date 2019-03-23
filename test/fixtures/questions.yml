@@ -5,9 +5,6 @@ one:
   answer: one
 
 two:
-  text: Как зайти в "меню"?
-  answer: one
-
-three:
   text: Как запустить обучение системы?
   answer: two
+

@@ -2,7 +2,7 @@ class Answer < ApplicationRecord
   has_many :questions, dependent: :destroy
 
   validates :text, presence: true, uniqueness: true
-  validates :vector, uniqueness: true, allow_nil: true
+  # validates :vector, uniqueness: true, allow_nil: true
 
   serialize :vector, Array
 
@@ -23,6 +23,7 @@ class Answer < ApplicationRecord
     end
     a.vector << 1
     a.save
+    puts '!!!'
   end
 
 end

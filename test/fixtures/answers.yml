@@ -1,8 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text:
-    Кнопка "меню" находится в левом верхнем углу.
+  text: Кнопка "меню" находится в левом верхнем углу.
 
 two:
   text: Нажмите на кнопку в правом верхнем углу, обучение потребует время.
