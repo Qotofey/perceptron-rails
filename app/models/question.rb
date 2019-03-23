@@ -23,9 +23,9 @@ class Question < ApplicationRecord
     arr.each do |word|
       w = Word.create(value: stem(word))
       if w.id.nil?
-        self.basics << Word.all.where(value: w.value).first.id
+        self.basics.push Word.all.where(value: w.value).first.id
       else
-        self.basics << w.id
+        self.basics.push w.id
       end
     end
     self.save

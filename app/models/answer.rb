@@ -6,23 +6,34 @@ class Answer < ApplicationRecord
 
   serialize :vector, Array
 
-  after_create :create_vectors
+  # before_create :normalize_other_vectors
+  # after_create :create_vectors
 
   def create_vectors
     size = Answer.all.size - 1
 
-    for i in 0...size do
-      a = Answer.all[i]
-      a.vector.push 0
-      a.save
-    end
-
     a = Answer.all[size]
     for i in 0...size do
-      a.vector.push 0
+      a.vector << 0
     end
-    a.vector.push 1
+    a.vector << 1
     a.save
   end
 
+  def normalize_other_vectors
+    for i in 0...Answer.all.size do
+      answer = Answer.all[i]
+      answer.vector << 0
+      answer.save
+    end
+  end
+
 end
+
+=begin
+git add .
+git commit -am "fix prod"
+git push
+cap production deploy
+
+=end
