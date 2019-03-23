@@ -11,9 +11,9 @@ class Question < ApplicationRecord
   serialize :vector, Array
   serialize :basics, Array
 
-  after_create :filtered
-  after_create :after_event_add_new_question
-  after_update :after_event_add_new_question
+  # after_create :filtered
+  # after_create :after_event_add_new_question
+  # after_update :after_event_add_new_question
   # after_update :filtered
   #
   # before_update :clean
