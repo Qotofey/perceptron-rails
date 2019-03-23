@@ -13,9 +13,16 @@ Word.delete_all
 Perceptron.delete_all
 Layer.delete_all
 
-answer_one = Answer.create(text: 'Кнопка "меню" находится в левом верхнем углу.')
-Question.create(text: 'Где находится кнопка меню?', answer: answer_one)
-Question.create(text: 'Как зайти в меню?', answer: answer_one)
+answer_one = Answer.new(text: 'Кнопка "меню" находится в левом верхнем углу.')
+answer_one.save
+question_one = Question.new(text: 'Где находится кнопка меню?', answer: answer_one)
+question_one.save
+question_two = Question.new(text: 'Как зайти в меню?', answer: answer_one)
+question_two.save
+
+# answer_one = Answer.create(text: 'Кнопка "меню" находится в левом верхнем углу.')
+# Question.create(text: 'Где находится кнопка меню?', answer: answer_one)
+# Question.create(text: 'Как зайти в меню?', answer: answer_one)
 
 answer_two = Answer.create(text: 'Нажмите на кнопку в правом верхнем углу, обучение потребует время.')
 Question.create(text: 'Как запустить обучение системы?', answer: answer_two)
