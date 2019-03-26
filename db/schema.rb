@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_021135) do
+ActiveRecord::Schema.define(version: 2019_03_26_080021) do
 
   create_table "answers", force: :cascade do |t|
+    t.text "text"
+    t.text "stem_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "const_answers", force: :cascade do |t|
     t.text "text"
     t.string "vector"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "const_questions", force: :cascade do |t|
+    t.text "text"
+    t.string "vector"
+    t.string "basics"
+    t.integer "const_answer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["const_answer_id"], name: "index_const_questions_on_const_answer_id"
   end
 
   create_table "layers", force: :cascade do |t|
@@ -33,14 +50,14 @@ ActiveRecord::Schema.define(version: 2019_03_25_021135) do
 
   create_table "perceptrons", force: :cascade do |t|
     t.integer "size"
+    t.decimal "coefficient"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "questions", force: :cascade do |t|
     t.text "text"
-    t.string "vector"
-    t.string "basics"
+    t.text "stem_text"
     t.integer "answer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,7 +69,6 @@ ActiveRecord::Schema.define(version: 2019_03_25_021135) do
     t.string "vector"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "count"
   end
 
 end

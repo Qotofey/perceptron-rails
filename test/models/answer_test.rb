@@ -2,6 +2,9 @@ require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
 
+  # в качестве аргумента стоит использовать только поле text,
+  # использовать остальные аргументы в конструкторе - бессмысленно
+
   fixtures :answers
 
   test "свойство ответа text не должно быть пустым" do

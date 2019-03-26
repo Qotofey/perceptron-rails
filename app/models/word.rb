@@ -7,6 +7,8 @@ class Word < ApplicationRecord
 
   after_create :create_vectors
 
+  # scope :all_size, -> { all.size }
+
   def create_vectors
     size = Word.all.size - 1
 

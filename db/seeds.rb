@@ -10,6 +10,9 @@ Answer.delete_all
 Question.delete_all
 Word.delete_all
 
+ConstAnswer.destroy_all
+ConstQuestion.destroy_all
+
 Perceptron.delete_all
 Layer.delete_all
 

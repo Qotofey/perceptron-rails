@@ -10,8 +10,26 @@ class Perceptron < ApplicationRecord
   after_create :build
 
   def build
+    #очищаем данные персептрона
+    ConstAnswer.destroy_all
+    ConstQuestion.destroy_all
+    Word.destroy_all
+    #копируем заполняемые данные в постоянные
+    Answer.all.each do |answer|
+      const_answer = ConstAnswer.create(text: answer.text)
+      answer.questions.each do |question|
+        cq = ConstQuestion.create(text: question.text, const_answer_id: const_answer.id)
+        question.stem_text.each do |word|
+          Word.create value: word
+        end
+        # TODO: сделать автозаполнение Word при инициализации ConstQuestion
+      end
+    end
+
+    #заполняем вектора каждого объекта
+
     size_inputs = Word.all.size
-    size_outputs = Answer.all.size
+    size_outputs = ConstAnswer.all.size
 
     for i in 0...size
       if i == size - 1

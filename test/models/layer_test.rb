@@ -10,9 +10,5 @@ class LayerTest < ActiveSupport::TestCase
     assert !layer.errors[:weights].any?
     assert !layer.errors[:perceptron].any?
   end
-  #
-  # test "awda" do
-  #
-  # end
 
 end
