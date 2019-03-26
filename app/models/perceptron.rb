@@ -5,6 +5,11 @@ class Perceptron < ApplicationRecord
   has_many :layers, dependent: :destroy
 
   validates :size, presence: true
+  validates :coefficient, presence: true, numericality: { greater_than_or_equal_to: 0.00000001 }
+
+  after_initialize do
+    self.coefficient = 0.025 if self.coefficient.nil?
+  end
 
   before_create :before_event_create_new_perceptron
   after_create :build
@@ -22,23 +27,25 @@ class Perceptron < ApplicationRecord
         question.stem_text.each do |word|
           Word.create value: word
         end
-        # TODO: сделать автозаполнение Word при инициализации ConstQuestion
       end
     end
+    # TODO: нужно заполнить содержимое vector и basics в объекте ConstQuestion
+
+    # TODO: нужно заполнить содержимое vector в объекте ConstAnswer
 
     #заполняем вектора каждого объекта
 
-    size_inputs = Word.all.size
-    size_outputs = ConstAnswer.all.size
-
-    for i in 0...size
-      if i == size - 1
-        Layer.create(size_inputs: size_inputs, size_outputs: size_outputs, perceptron: self)
-      else
-        Layer.create(size_inputs: size_inputs, size_outputs: size_inputs, perceptron: self)
-      end
-    end
-    return learn 0
+    # size_inputs = Word.all.size
+    # size_outputs = ConstAnswer.all.size
+    #
+    # for i in 0...size
+    #   if i == size - 1
+    #     Layer.create(size_inputs: size_inputs, size_outputs: size_outputs, perceptron: self)
+    #   else
+    #     Layer.create(size_inputs: size_inputs, size_outputs: size_inputs, perceptron: self)
+    #   end
+    # end
+    # return learn 0
   end
 
   # отправляем сигналы

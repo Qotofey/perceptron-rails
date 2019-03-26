@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyText
-  vector: MyString
+  text: Кнопка "меню" находится в левом верхнем углу.
+  vector: [ 1, 0 ]
 
 two:
-  text: MyText
-  vector: MyString
+  text: Нажмите на кнопку в правом верхнем углу, обучение потребует время.
+  vector: [ 0, 1 ]

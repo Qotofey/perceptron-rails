@@ -2,9 +2,12 @@
 
 one:
   value: где
+  vector: [ 1, 0, 0 ]
 
 two:
   value: наход
+  vector: [ 0, 1, 0 ]
 
 three:
   value: кнопк
+  vector: [ 0, 0, 1 ]
