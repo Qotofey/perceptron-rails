@@ -6,7 +6,6 @@ class Word < ApplicationRecord
   serialize :vector, Array
 
   before_create do
-    puts "before_create"
     Word.all.each do |word|
       word.vector.push 0
       word.save

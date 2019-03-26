@@ -21,31 +21,33 @@ class Perceptron < ApplicationRecord
     Word.destroy_all
     #копируем заполняемые данные в постоянные
     Answer.all.each do |answer|
-      const_answer = ConstAnswer.create(text: answer.text)
       answer.questions.each do |question|
-        cq = ConstQuestion.create(text: question.text, const_answer_id: const_answer.id)
         question.stem_text.each do |word|
           Word.create value: word
         end
       end
     end
-    # TODO: нужно заполнить содержимое vector и basics в объекте ConstQuestion
-
-    # TODO: нужно заполнить содержимое vector в объекте ConstAnswer
+    #копипуем заполняемые данные в постоянные
+    Answer.all.each do |answer|
+      const_answer = ConstAnswer.create(text: answer.text)
+      answer.questions.each do |question|
+        ConstQuestion.create(text: question.text, const_answer_id: const_answer.id)
+      end
+    end
 
     #заполняем вектора каждого объекта
 
-    # size_inputs = Word.all.size
-    # size_outputs = ConstAnswer.all.size
-    #
-    # for i in 0...size
-    #   if i == size - 1
-    #     Layer.create(size_inputs: size_inputs, size_outputs: size_outputs, perceptron: self)
-    #   else
-    #     Layer.create(size_inputs: size_inputs, size_outputs: size_inputs, perceptron: self)
-    #   end
-    # end
-    # return learn 0
+    size_inputs = Word.all.size
+    size_outputs = ConstAnswer.all.size
+
+    for i in 0...size
+      if i == size - 1
+        Layer.create(size_inputs: size_inputs, size_outputs: size_outputs, perceptron: self)
+      else
+        Layer.create(size_inputs: size_inputs, size_outputs: size_inputs, perceptron: self)
+      end
+    end
+    return learn 0
   end
 
   # отправляем сигналы
@@ -64,7 +66,7 @@ class Perceptron < ApplicationRecord
 
   # обратное распространение ошибки, все итерации
   def learn epochs
-    Question.all.each do |question|
+    ConstQuestion.all.each do |question|
       _vector = Vector.zero(Word.all.size)
       question.basics.each do |num|
         _vector += Vector[*Word.find(num).vector]
@@ -75,8 +77,8 @@ class Perceptron < ApplicationRecord
     error = 0
     for i in (0..epochs)
       error = 0
-      Question.all.each do |question|
-        error += train question.vector, question.answer.vector
+      ConstQuestion.all.each do |question|
+        error += train question.vector, question.const_answer.vector
       end
     end
     return { result_error: error }
@@ -115,7 +117,7 @@ class Perceptron < ApplicationRecord
       _vector += Vector[*w.vector] unless w.nil?
     end
     out = put(_vector).to_a[0]
-    Answer.all[out.index(out.max)]
+    ConstAnswer.all[out.index(out.max)]
   end
 
   def before_event_create_new_perceptron

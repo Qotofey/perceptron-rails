@@ -1,4 +1,7 @@
 class ConstQuestion < ApplicationRecord
+  require 'concerns/porter_stemmer'
+  include PorterStemmer
+  require 'matrix'
 
   belongs_to :const_answer
 
@@ -10,7 +13,13 @@ class ConstQuestion < ApplicationRecord
   serialize :vector, Array
   serialize :basics, Array
 
-  after_initialize do
+  before_create do
+    self.text
+        .downcase
+        .scan(/(?:[а-яё+])+/)
+        .map { |w| stem(w) }
+        .each { |word| self.basics.push(Word.where(value: word).first.id) }
+    self.vector = Vector.zero(Word.all.size).to_a
 
   end
 
