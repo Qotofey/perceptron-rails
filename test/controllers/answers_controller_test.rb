@@ -2,9 +2,11 @@ require 'test_helper'
 
 class AnswersControllerTest < ActionDispatch::IntegrationTest
 
+  fixtures :answers
+
   setup do
     @answer = answers(:one)
-    @update = Answer.new(text: 'новый ответ')
+    @update = Answer.new(text: 'Ответ на вопрос!')
   end
 
   test "should get index" do
@@ -15,7 +17,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
   test "should create answer" do
     # все аргументы есть
     assert_difference('Answer.count') do
-      post answers_url, params: { answer: { text: '@answer.text' } }, as: :json
+      post answers_url, params: { answer: { text: 'Ответ на вопрос' } }, as: :json
     end
 
     assert_response 201

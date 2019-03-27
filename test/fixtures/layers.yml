@@ -3,11 +3,11 @@
 one:
   inputs: 4
   outputs: 4
-  weights: [ [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1] ]
+  weights: [ [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1] ]
   perceptron: one
 
 two:
   inputs: 4
   outputs: 4
-  weights:  [ [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1] ]
+  weights:  [ [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1], [1, 1, 0, 1] ]
   perceptron: one

@@ -15,7 +15,7 @@ class PerceptronsController < ApplicationController
 
   # POST /perceptrons
   def create
-    @perceptron = Perceptron.new(perceptron_params)
+    @perceptron = Perceptron.create(perceptron_params)
 
     if @perceptron.save
       render json: @perceptron, status: :created, location: @perceptron
@@ -42,7 +42,7 @@ class PerceptronsController < ApplicationController
   def asking
     @perceptron = Perceptron.first
     text = params[:text]
-    render json: @perceptron.ask(text)
+    render json: @perceptron.ask(text: text)
   end
 
   # POST /perceptrons/learning

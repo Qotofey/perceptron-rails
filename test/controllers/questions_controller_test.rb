@@ -1,10 +1,13 @@
 require 'test_helper'
 
 class QuestionsControllerTest < ActionDispatch::IntegrationTest
+
+  fixtures :questions
+
   setup do
     @question = questions(:one)
     @answer = Answer.create(text: 'Ответ на вопрос')
-    @answer_two = Answer.create(text: 'Ответ на вопрос 2')
+    @answer_two = Answer.create(text: 'Второй ответ на вопрос')
   end
 
   test "should get index" do
@@ -14,7 +17,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create question" do
     assert_difference('Question.count') do
-      post questions_url, params: { question: { answer_id: @answer.id, text: 'New question. Задаю вопрос?' } }, as: :json
+      post questions_url, params: { question: { answer_id: @answer.id, text: 'Новый вопрос. Задаю вопрос?' } }, as: :json
     end
 
     assert_response 201

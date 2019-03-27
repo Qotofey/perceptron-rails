@@ -2,6 +2,4 @@
 
 one:
   size: 2
-
-two:
-  size: 3
+  coefficient: 0.025

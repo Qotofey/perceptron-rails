@@ -111,7 +111,7 @@ class Perceptron < ApplicationRecord
 
   def ask text
     _vector = Vector.zero(Word.all.size)
-    arr = text.downcase.scan(/(?:[a-zа-яё])+/)
+    arr = text.downcase.scan(/(?:[а-яё])+/)
     arr.each do |word|
       w = Word.where(value: stem(word)).first
       _vector += Vector[*w.vector] unless w.nil?
