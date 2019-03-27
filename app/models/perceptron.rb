@@ -103,7 +103,7 @@ class Perceptron < ApplicationRecord
     delta_wights = Matrix.combine(errors, gradients) { |a, b| a * b }
 
     _weights = Matrix[*layer.weights]
-    _weights -= (delta_wights.t * Matrix[*layer.inputs] * 0.025).t
+    _weights -= (delta_wights.t * Matrix[*layer.inputs] * self.coefficient.to_f).t
     layer.weights = _weights
     layer.save
     return delta_wights * _weights.t
@@ -111,7 +111,7 @@ class Perceptron < ApplicationRecord
 
   def ask text
     _vector = Vector.zero(Word.all.size)
-    arr = text.downcase.scan(/(?:[а-яё])+/)
+    arr = text.to_s.downcase.scan(/(?:[а-яё])+/)
     arr.each do |word|
       w = Word.where(value: stem(word)).first
       _vector += Vector[*w.vector] unless w.nil?
