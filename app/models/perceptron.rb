@@ -103,7 +103,7 @@ class Perceptron < ApplicationRecord
     delta_wights = Matrix.combine(errors, gradients) { |a, b| a * b }
 
     _weights = Matrix[*layer.weights]
-    _weights -= (delta_wights.t * Matrix[*layer.inputs] * self.coefficient.to_f).t
+    _weights -= (delta_wights.t * Matrix[*layer.inputs] * 0.025).t
     layer.weights = _weights
     layer.save
     return delta_wights * _weights.t
