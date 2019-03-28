@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_03_26_080021) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: :cascade do |t|
     t.text "text"
     t.text "stem_text"
@@ -50,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_080021) do
 
   create_table "perceptrons", force: :cascade do |t|
     t.integer "size"
-    t.decimal "coefficient"
+    t.float "coefficient"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

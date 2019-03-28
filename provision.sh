@@ -24,6 +24,7 @@ rbenv install -v 2.6.1
 rbenv global 2.6.1
 
 echo "gem: --no-document" > ~/.gemrc
+gem install bundler
 
 sudo yum install -y epel-release yum-utils
 sudo yum-config-manager --enable epel
@@ -64,11 +65,15 @@ EOL
 sudo systemctl start nginx.service
 
 sudo yum install -y https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm
-sudo yum install -y postgresql11-server postgresql11
+sudo yum install -y postgresql11-server postgresql11 postgresql11-libs postgresql-libs
+sudo yum install -y libpqxx libpqxx-devel
+
 sudo /usr/pgsql-11/bin/postgresql-11-setup initdb
 
 sudo systemctl start postgresql-11
 sudo systemctl enable postgresql-11
+
+sudo yum install -y postgresql-devel #for gem 'pg'
 
 #sudo vi /var/lib/pgsql/11/data/postgresql.conf
 
@@ -93,5 +98,26 @@ host    all             all             ::1/128                 md5
 #host    replication     all             127.0.0.1/32            ident
 #host    replication     all             ::1/128                 ident
 EOL
+
+sudo su - postgres
+###
+psql
+###
+\l
+\dg
+create user vagrant with password '123123';
+create database "perceptron_dev" with owner=vagrant;
+\l
+\q
+exit
+###
+cd ~/perceptron-rails/
+
+gem uninstall fileutils
+gem update --default
+
+bundle install
+
+rake db:migrate
 
 sudo systemctl restart postgresql-11
