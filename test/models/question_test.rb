@@ -49,8 +49,8 @@ class QuestionTest < ActiveSupport::TestCase
         answer: Answer.create(text: 'Вопрос должен быть написан на кирилице')
     )
     assert question.valid?
-    assert !question.errors[:text].any?
-    assert !question.errors[:answer].any?
+    assert_not question.errors[:text].any?
+    assert_not question.errors[:answer].any?
   end
 
 end

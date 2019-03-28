@@ -42,7 +42,6 @@ class PerceptronTest < ActiveSupport::TestCase
   end
 
   test "задать вопрос" do
-    puts @perceptron.ask('как добавить новую обучающую выборку?')
     assert @perceptron.ask 'как добавить новую обучающую выборку?'
   end
 
