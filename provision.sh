@@ -127,6 +127,7 @@ sudo yum install -y postgresql-devel #for gem 'pg'
 #\dg
 #create user vagrant with password '123123';
 #create database "perceptron_dev" with owner=vagrant;
+#create database "perceptron_test" with owner=vagrant;
 #\l
 #\q
 #exit

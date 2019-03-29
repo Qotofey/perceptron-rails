@@ -18,9 +18,14 @@ class Layer < ApplicationRecord
     self.save
   end
 
+  # передаётся тип
   def predict vector
     outs = Mapper::bipolar(vector * Matrix[*self.weights])
-
+    # puts "******************************"
+    # puts Matrix[vector]
+    # puts "weights === #{Matrix[*self.weights]}"
+    # puts outs
+    # puts "******************************"
     self.inputs = vector
     self.outputs = outs
     self.save

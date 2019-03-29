@@ -53,7 +53,8 @@ class Perceptron < ApplicationRecord
   # отправляем сигналы
   def put vector
     signals = Matrix[vector]
-    self.layers.each do |layer|
+    self.layers.order(id: :asc).each do |layer|
+      puts "\n\n\nСлой: #{layer.id}\n\n\n"
       signals = layer.predict signals
     end
     signals
@@ -88,7 +89,7 @@ class Perceptron < ApplicationRecord
   def train inputs, expected
     actual = put inputs # actual of Matrix
     errors = actual - Matrix[expected]
-    self.layers.reverse_each do |layer|
+    self.layers.order(id: :asc).reverse_each do |layer|
       errors = foreach_all_neurons layer, errors
     end
     e = 0
