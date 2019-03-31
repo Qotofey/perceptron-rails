@@ -48,6 +48,10 @@ class PerceptronsController < ApplicationController
   # POST /perceptrons/learning
   def learning
     @perceptron = Perceptron.first
+    if (params[:coefficient].present?)
+      @perceptron.coefficient = params[:coefficient]
+      @perceptron.save
+    end
     epochs = params[:epochs]
     render json: @perceptron.learn(epochs)
   end

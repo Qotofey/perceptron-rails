@@ -21,7 +21,11 @@
     <h3>Порядок действий для обучения</h3>
     <ol>
         <li><a href="#add-answer">добавить ответ на вопрос</a></li>
+        <li><a href="#update-answer">изменить ответ на вопрос</a></li>
+        <li><a href="#delete-answer">удалить ответ на вопрос</a></li>
         <li><a href="#add-question">добавить вопрос к ответу</a></li>
+        <li><a href="#update-question">изменить вопрос к ответу</a></li>
+        <li><a href="#delete-question">удалить вопрос к ответу</a></li>
         <li><a href="#create-perceptron">организовать структуру нейросети</a></li>
         <li><a href="#learn-perceptron">тренировать нейросеть</a></li>
         <li><a href="#ask-perceptron">спросить нейросеть</a></li>
@@ -35,7 +39,7 @@
 {
 	"text": "Кнопка \"меню\" находится в левом верхнем углу."
 }</pre>
-        <p>Response: </p>
+        <p>Response: 201 (В случае успеха)</p>
         <pre>
 {
   "id": 1,
@@ -54,6 +58,48 @@
 }</pre>
         <hr>
     </div>
+
+    <div id="update-answer">
+        <b># изменить ответ на вопрос</b>
+        <p>Запрос: PUT / PATCH -- [http://api-perceptron.qotofey.ru/answers/{id}]</p>
+        <p>Body: </p>
+        <pre>
+{
+	"text": "Кнопка \"меню\" находится в левом верхнем углу."
+}</pre>
+        <p>Response: 200 (В случае успеха)</p>
+        <pre>
+{
+  "id": 1,
+  "text": "Кнопка \"меню\" находится в левом верхнем углу.",
+  "stem_text": [
+    "кнопк",
+    "мен",
+    "наход",
+    "в",
+    "лев",
+    "верхн",
+    "угл"
+  ],
+  "created_at": "2019-03-28T08:12:25.336Z",
+  "updated_at": "2019-03-28T08:12:25.336Z"
+}</pre>
+        <hr>
+    </div>
+
+    <div id="delete-answer">
+        <b># удалить ответ на вопрос</b>
+        <p>Запрос: DELETE -- [http://api-perceptron.qotofey.ru/answers/{id}]</p>
+        <p>Body: </p>
+        <pre>
+{
+	"text": "Кнопка \"меню\" находится в левом верхнем углу."
+}</pre>
+        <p>Response: 204 (В случае успеха)</p>
+
+        <hr>
+    </div>
+
     <div id="add-question">
         <b># добавить вопрос к ответу</b>
         <p>Запрос: POST -- [http://api-perceptron.qotofey.ru/questions]</p>
@@ -64,7 +110,7 @@
 	"answer_id": 1
 }
         </pre>
-        <p>Response: </p>
+        <p>Response: 201 (В случае успеха)</p>
         <pre>
 {
   "id": 1,
@@ -82,6 +128,51 @@
         </pre>
         <hr>
     </div>
+
+    <div id="update-question">
+        <b># изменить вопрос к ответу</b>
+        <p>Запрос: POST -- [http://api-perceptron.qotofey.ru/questions/1]</p>
+        <p>Body: </p>
+        <pre>
+{
+	"text": "Как зайти в меню?",
+	"answer_id": 1
+}
+        </pre>
+        <p>Response: 200 (В случае успеха)</p>
+        <pre>
+{
+  "id": 1,
+  "text": "Как зайти в меню?",
+  "stem_text": [
+    "как",
+    "зайт",
+    "в",
+    "мен"
+  ],
+  "answer_id": 1,
+  "created_at": "2019-03-28T08:14:43.449Z",
+  "updated_at": "2019-03-28T08:14:43.449Z"
+}
+        </pre>
+        <hr>
+    </div>
+
+    <div id="delete-question">
+        <b># удалить вопрос к ответу</b>
+        <p>Запрос: POST -- [http://api-perceptron.qotofey.ru/questions/1]</p>
+        <p>Body: </p>
+        <pre>
+{
+	"text": "Как зайти в меню?",
+	"answer_id": 1
+}
+        </pre>
+        <p>Response: 204 (В случае успеха)</p>
+
+        <hr>
+    </div>
+
     <div id="create-perceptron">
         <b># организовать структуру нейросети</b>
         <p>Запрос: POST -- [http://api-perceptron.qotofey.ru/perceptrons]</p>
@@ -107,7 +198,8 @@
         <p>Body: </p>
         <pre>
 {
-  "epochs": 100
+	"epochs": 1,
+	"coefficient": 0.0125
 }</pre>
         <p>Response: </p>
         <pre>
